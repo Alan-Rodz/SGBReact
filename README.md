@@ -34,7 +34,10 @@ an adapter to communicate, through NextAuth, with SupaBase, which is where a
 PostgreSQL database is used, as well as a bucket to store files. 
 
 # Feature Showcase
-<!-- ![Welcome](https://github.com/Alan-Rodz/CloudQuizApp/blob/main/showcase/index.jpg) -->
+## Login Screen
+The user can log in with their Gmail Account, or a NextAuth email link can be 
+sent to the email they provide. These links are valid for 10 minutes. 
+![LoginScreen](https://github.com/Alan-Rodz/SGBReact/blob/main/img/loginScreen.png)
 
 # Application Schema
 NOTE: Entities that are not discussed below are related to NextAuth, and 
