@@ -87,6 +87,11 @@ they generate when they are made can be accessed.
 ![seeAllSale](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllSale.png)
 ![seeMembershipSale](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeMembershipSale.png)
 
+## Sale Emails
+Whenever Books or Memberships are sold, the customer receives an Email as a 
+confirmation, as well as the information of the products that were bought.
+![saleEmail](https://github.com/Alan-Rodz/SGBReact/blob/main/img/saleEmail.png)
+
 ## Author
 Authors can be registered, seen and looked through, and their information can be updated.
 ![registerAuthor](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerAuthor.png)
@@ -117,6 +122,7 @@ The User has access to the Profile page, where information about him or her is s
 
 ## Populate DB Page and Route
 A page with a button in the middle to put mock data into the database.
+![populate](https://github.com/Alan-Rodz/SGBReact/blob/main/img/populate.png)
 
 # Application Schema
 NOTE: Entities that are not discussed below are related to NextAuth, and 
