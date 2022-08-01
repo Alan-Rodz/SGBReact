@@ -25,7 +25,7 @@ The app is meant to be a representation of a system that should help a fictional
 library to better manage itself. Originally this was a project I did in school, 
 but the previous version was much more reduced in actual functionality (e.g. it 
 lacked authentication). This version was thus developed to see what a more 
-complete version of the project would look like. 
+complete iteration of the project would look like. 
 
 # Architecture Summary
 The application is built with NextJS, which provides the required 
@@ -142,7 +142,7 @@ meant to sell. The schema is limited to one Author per book, and the only
 information saved about them is their name.
 
 ## Book
-Books are self descriptive. Information about their genre, release date, author and
+Books are self descriptive. Information about their genre, release date and
 author is saved. 
 
 ## BookCopy
@@ -175,3 +175,4 @@ file that gets created when the sale is performed is kept.
 TaxRates are meant to represent the Tax that gets applied to a certain Sale. Just
 like Membership prices, they can vary through time, and they can be modified by
 Administrator Employees. They have the same limitations that Membership prices do.
+
