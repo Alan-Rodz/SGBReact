@@ -34,7 +34,7 @@ an adapter to communicate, through NextAuth, with SupaBase, which is where a
 PostgreSQL database is used, as well as a bucket to store files. 
 
 # Feature Showcase
-![Main Menu of the App](https://github.com/Alan-Rodz/CloudQuizApp/blob/main/showcase/index.jpg)
+<!-- ![Welcome](https://github.com/Alan-Rodz/CloudQuizApp/blob/main/showcase/index.jpg) -->
 
 # Application Schema
 NOTE: Entities that are not discussed below are related to NextAuth, and 
