@@ -36,8 +36,87 @@ PostgreSQL database is used, as well as a bucket to store files.
 # Feature Showcase
 ## Login Screen
 The user can log in with their Gmail Account, or a NextAuth email link can be 
-sent to the email they provide. These links are valid for 10 minutes. 
-![LoginScreen](https://github.com/Alan-Rodz/SGBReact/blob/main/img/loginScreen.png)
+sent to the email they provide. These links are valid for 10 minutes. If the
+user is logging into the application for the first time, a Welcome Email will
+also be sent.
+![loginScreen](https://github.com/Alan-Rodz/SGBReact/blob/main/img/loginScreen.png)
+![loginEmail](https://github.com/Alan-Rodz/SGBReact/blob/main/img/loginEmail.png)
+![welcomeEmail](https://github.com/Alan-Rodz/SGBReact/blob/main/img/welcomeEmail.png)
+
+## Main Menu of the Application
+The main menu features one of the Logos of the application, and a NavBar so that
+the user can quickly go through the functionality of the app.
+![mainMenu](https://github.com/Alan-Rodz/SGBReact/blob/main/img/mainMenu.png)
+
+## Employee
+### Seeing all Employees
+An Employee whose level is that of an Administrator can access the menu to see
+all Employees. In all of these 'seeAll' menus, the editing (or detail) functionality
+will be available depending on the level of the Employee.
+![seeAllEmployee](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllEmployee.png)
+
+### Updating an Employee's Information
+An Administrator can modify the information of another Employee
+![updateEmployee](https://github.com/Alan-Rodz/SGBReact/blob/main/img/updateEmployee.png)
+
+## LibraryUser
+An Administrator or Secretary level Employee can see the information of LibraryUsers,
+as well as edit their information. The PDF that gets generated from a membership sale
+can be accessed as well. 
+![seeAllLibraryUser](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllLibraryUser.png)
+![updateLibraryUser](https://github.com/Alan-Rodz/SGBReact/blob/main/img/updateLibraryUser.png)
+![membershipSalePDF](https://github.com/Alan-Rodz/SGBReact/blob/main/img/membershipSalePDF.png)
+
+## Book
+Books can be registered, seen and looked through, and their information can be updated.
+![registerBook](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerBook.png)
+![seeAllBook](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllBook.png)
+![updateBook](https://github.com/Alan-Rodz/SGBReact/blob/main/img/updateBook.png)
+
+## BookCopy
+BookCopies can be registered, seen and looked through, and their information can be updated.
+![registerBookCopy](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerBookCopy.png)
+![seeAllBookCopy](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllBookCopy.png)
+![updateBookCopy](https://github.com/Alan-Rodz/SGBReact/blob/main/img/updateBookCopy.png)
+
+## Sale
+Sales can be made for books, memberships, seen and looked through. The PDF that 
+they generate when they are made can be accessed.
+![registerSale](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerSale.png)
+![registerMembershipSale](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerMembershipSale.png)
+![seeAllSale](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllSale.png)
+![seeMembershipSale](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeMembershipSale.png)
+
+## Author
+Authors can be registered, seen and looked through, and their information can be updated.
+![registerAuthor](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerAuthor.png)
+![seeAllAuthor](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllAuthor.png)
+![updateAuthor](https://github.com/Alan-Rodz/SGBReact/blob/main/img/updateAuthor.png)
+
+## TaxRate
+TaxRates can be registered, seen and looked through. Once set they cannot be 
+deleted. If a new TaxRate is to be applied, it will replace the most recent one, 
+in order to maintain records of all of them.
+![registerTaxRate](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerTaxRate.png)
+![seeAllTaxRate](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllTaxRate.png)
+
+## Prices
+Since things like Membership prices can vary through time, an Administrator can 
+add new Membership prices. The same constraints that apply to TaxRates also apply
+to Membership prices.
+![registerMembershipPrice](https://github.com/Alan-Rodz/SGBReact/blob/main/img/registerMembershipPrice.png)
+![seeAllMembershipPrice](https://github.com/Alan-Rodz/SGBReact/blob/main/img/seeAllMembershipPrice.png)
+
+## Profile
+The User has access to the Profile page, where information about him or her is shown.
+![profilePage](https://github.com/Alan-Rodz/SGBReact/blob/main/img/profilePage.png)
+
+# Other Features
+## Custom 404 Page
+![404](https://github.com/Alan-Rodz/SGBReact/blob/main/img/404.png)
+
+## Populate DB Page and Route
+A page with a button in the middle to put mock data into the database.
 
 # Application Schema
 NOTE: Entities that are not discussed below are related to NextAuth, and 
