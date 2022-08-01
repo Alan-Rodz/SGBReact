@@ -176,3 +176,16 @@ TaxRates are meant to represent the Tax that gets applied to a certain Sale. Jus
 like Membership prices, they can vary through time, and they can be modified by
 Administrator Employees. They have the same limitations that Membership prices do.
 
+# Project Limitations
+There are several things that are outside the scope of this small application, as well
+as things that could be improved upon, such as:
+- Improving Date Handling
+- PaginationButtons are very likely needlessly complex / not efficient
+- The relationship between Sales, PDFs and Tables could be better
+- Further logistic development for what it means to update a Membership (e.g. 
+enforcing Membership renewal given certain conditions) could be implemented
+- Further logistic development regarding Book Sales could be made
+
+And I'm sure there are many others. But like the disclaimer said, this app was
+developed for educational purposes.
+ 
