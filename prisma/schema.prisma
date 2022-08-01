@@ -1,0 +1,229 @@
+// ********************************************************************************
+// == Setup =======================================================================
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_DATABASE_URL")
+}
+
+// == Auth Models =================================================================
+// -- Account ---------------------------------------------------------------------
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// NOTE: This is both an auth model and an app model
+model User {
+  // .. Auth ......................................................................
+  id                                      String    @id @default(cuid())
+  name                                    String?
+  email                                   String?   @unique
+  emailVerified                           DateTime?
+  image                                   String?
+  accounts                                Account[]
+  sessions                                Session[]
+
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  // .. App .......................................................................
+  employeeLevel EmployeeLevel             @default(EMPLOYEE)
+  birthDate            DateTime           @default(now())
+  address              String             @default("Employee Address")
+  sex                  Sex                @default(MALE)
+  hireDate             DateTime           @default(now())
+  fireDate             DateTime           @default("1900-01-01T00:00:00.00Z")
+  civilState           CivilState         @default(SINGLE)
+  shift                Shift              @default(MORNING)
+  restDay              DayOfWeek          @default(MONDAY)
+
+  // .. Relations .................................................................
+  sales                Sale[]             // An employee can make several sales
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+  @@unique([identifier, token])
+}
+
+// == App Models ==================================================================
+// -- Author ----------------------------------------------------------------------
+model Author {
+  id                    String            @id @default(cuid())
+  name                  String            @default("Author")
+
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  // .. Relations .................................................................
+  books                 Book[]            // An author can write many books
+}
+
+// == Book ------------------------------------------------------------------------
+model Book {
+  id                    String            @id @default(cuid())
+  genre                 Genre             @default(LITERARY)
+  name                  String            @default("Book Name")
+  releaseDate           DateTime          @default(now())
+
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  // .. Relations .................................................................
+  author                Author            @relation(fields: [authorId], references: [id]) // An author can write many books
+  authorId              String
+  copies                BookCopy[]        // a book can have many copies
+}
+model BookCopy {
+  id                    String            @id @default(cuid())
+  edition               String            @default("1st Edition")
+  pages                 Int               @default(100)
+  publisher             String            @default("Example Publisher")
+  quantityInStock       Int               @default(100)
+  priceMXN              Float             @default(100)
+
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  // .. Relations .................................................................
+  book                  Book              @relation(fields: [bookId], references: [id]) // A copy is a copy of a book
+  bookId                String            
+
+  bookCopiesOnSale      BookCopiesOnSale[] // Many books can be sold in a single sale  
+}
+
+// -- LibraryUser -----------------------------------------------------------------
+model LibraryUser {
+  id                    String             @id @default(cuid())
+  membershipExpDate     DateTime          
+  name                  String             @default("LibraryUser Name")
+  email                 String             @default("LibraryUser Email")
+
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  // .. Relations .................................................................
+  membershipSale        Sale              @relation(fields: [membershipSaleId], references: [id]) // An user can only get created from a membership sale 
+  membershipSaleId      String            @unique
+}
+model MembershipPrice {
+  id                    String            @id @default(cuid())
+  membershipPrice       Float 
+  startDate             DateTime          @default(now())
+  endDate               DateTime
+  
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+}
+
+// -- Sale ------------------------------------------------------------------------
+model Sale {
+  id                    String             @id @default(cuid())
+  date                  DateTime           @default(now())
+  price                 Float
+  pdfBucketRoute        String?
+
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
+
+  // .. Relations .................................................................
+  employee              User              @relation(fields: [employeeId], references: [id])  // An employee performs the sale
+  employeeId            String
+
+  libraryUser           LibraryUser?      // A sale of a membership creates a library user
+  bookCopiesOnSale      BookCopiesOnSale[]
+}
+model BookCopiesOnSale {
+  @@id([saleId, bookCopyId])
+  sale                  Sale              @relation(fields: [saleId], references: [id])
+  saleId                String
+
+  bookCopy              BookCopy          @relation(fields: [bookCopyId], references: [id])
+  bookCopyId            String
+  quantity              Int
+
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+}
+
+// -- TaxRate ---------------------------------------------------------------------
+model TaxRate {
+  id                    String            @id @default(cuid())
+  percentage            Int 
+  startDate             DateTime          @default(now())
+  endDate               DateTime
+  
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+}
+
+// == Enums =======================================================================
+// -- App Enums -------------------------------------------------------------------
+// .. Employe .....................................................................
+enum EmployeeLevel {
+  ADMIN
+  SECRETARY
+  EMPLOYEE
+}
+
+// .. Book ........................................................................
+enum Genre {
+  LITERARY
+  THRILLER
+  HORROR
+  HISTORICAL
+  SCIENCE_FICTION
+  FANTASY
+  PHILOSOPHICAL
+}
+
+// -- General Enums ---------------------------------------------------------------
+enum Sex {
+  MALE
+  FEMALE
+}
+enum CivilState {
+  MARRIED
+  SINGLE
+}
+enum Shift {
+  MORNING
+  AFTERNOON
+  NIGHT
+}
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
