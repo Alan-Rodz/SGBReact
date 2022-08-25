@@ -1,10 +1,10 @@
-# Sistema de Gestión Bibliotecaria
+# Library Management System
 
 If you're looking for the Spanish version of this README.md file, look at 
 README - Spanish.md
 
-DISCLAIMER: This app was developed for educational purposes, and its not 
-meant to be a production-ready. 
+DISCLAIMER: This project was developed for educational purposes, and its not 
+meant to be a production-ready application. 
 
 'Sistema de Gestión Bibliotecaria', which translates to 'Library Management
 System', is a project developed to learn how to use the following technology
