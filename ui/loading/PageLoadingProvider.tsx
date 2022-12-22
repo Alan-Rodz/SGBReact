@@ -25,7 +25,6 @@ export const PageLoadingProvider: React.FC<Props> = ({ children }) => {
 
   }, [Router.events]);
 
-
   // -- UI --------------------------------------------------------------------....
   return (
     <PageLoadingContext.Provider value={{ isPageLoading }}>
