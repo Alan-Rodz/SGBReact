@@ -67,7 +67,7 @@ const RegistrarIVA: NextPage<UserPageProps> = ({ user }) => {
           onSubmitHandler={handleSubmit}
 
           // .. Render Function ...................................................
-          renderFormFunction={(errors, touched, setFieldValue) =>
+          renderFormFunction={(errors, touched) =>
             <>
               <Text as='strong'>Registrar Tasa de IVA</Text>
 
